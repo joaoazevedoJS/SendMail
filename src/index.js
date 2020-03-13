@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParse = require("body-parser")
 const nodemailer = require('nodemailer')
+const config = require("./config/emailConfig.json")
 
 const app = express()
 
@@ -8,28 +9,30 @@ app.use(express.json())
 app.use(bodyParse.urlencoded({ extended: true }))
 
 app.post('/', (req, res) => {
-    const { name, email, message, password } = req.body
+    const { email, subject, message } = req.body
+
+    const { host, port, auth } = config
+    const { user } = auth
 
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: email,
-            pass: password,
-        }
+        host,
+        port,
+        auth
     })
 
     const SendMessage = {
-        from: email,
-        to: "yourEmail@...",
-        subject: "Email With NodeJS",
-        text: `Hello, I'm ${name}. \nMessage: ${message}.\n\n Date: ${new Date()}`
+        from: user,
+        to: email,
+        subject,
+        text: `${message}\n\n\n\n Date ${new Date()}`
     }
 
-    transporter.sendMail(SendMessage, function(error, info){
+    transporter.sendMail(SendMessage, function (error, info) {
         if (error) {
-            return res.json(error);
-        } else {
-            return res.json(`Email enviado: ${info.response}`);
+            return res.json(error)
+        }
+        else {
+            return res.json(`Email enviado: ${info.response}`)
         }
     })
 })
