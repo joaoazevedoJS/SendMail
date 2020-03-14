@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/media.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <img src="image/sendEmail.png" alt="SendEmail">
+    </header>
+
+    <section class="form">
+        <h2>Envie agora o seu email de modo facil!</h2>
+        <form action="/" method="post">
+            <label class="labelText" for="email">Email da Pessoa <span class=required>*</span></label>
+            <input 
+                type="email" 
+                name="email" 
+                id="email"
+                required
+            >
+
+            <label class="labelText" for="subject">Titulo do Email <span class=required>*</span></label>
+            <input 
+                type="text" 
+                name="subject" 
+                id="subject"
+                required
+            >
+
+            <label class="labelText" for="message">Corpo do Email <span class=required>*</span></label>
+            <textarea 
+                name="message" 
+                id="message" 
+                cols="30" 
+                rows="10"
+                required
+            ></textarea>
+
+            <input type="submit" value="ENVIAR" class="btn">
+        </form>
+    </section>
+
+    <footer>João Azevedo</footer>
+</body>
+
+</html>
