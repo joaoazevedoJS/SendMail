@@ -1,37 +1,37 @@
 @media only screen and (max-width: 1200px) {
-    /* title */
+  /* title */
 
-    h2 {
-        font-size: 120%;
-    }
+  h2 {
+    font-size: 120%;
+  }
 
-    /* Form */
+  /* Form */
 
-    section.form {
-        width: 70%;
-    }
+  main.form {
+    width: 70%;
+  }
 }
 
 @media only screen and (max-width: 830px) {
-    section.form {
-        width: 90%;
-    }
+  main.form {
+    width: 90%;
+  }
 }
 
 @media only screen and (max-width: 680px) {
-    /* title */
+  /* title */
 
-    h2 {
-        font-size: 90%;
-        text-align: center;
-        margin-bottom: 0;
-    }
+  h2 {
+    font-size: 90%;
+    text-align: center;
+    margin-bottom: 0;
+  }
 
-    /* Form */
+  /* Form */
 
-    section.form {
-        width: 70%;
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
+  main.form {
+    width: 70%;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }

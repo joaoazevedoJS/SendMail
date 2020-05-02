@@ -1,46 +1,12 @@
 const express = require('express')
 const bodyParse = require("body-parser")
-const nodemailer = require('nodemailer')
-const config = require("./config/emailConfig.json")
-const nunjucks = require('nunjucks')
 
 const app = express()
 
-app.use(express.json())
+const routes = require('./routes')
+
 app.use(express.static('public'))
 app.use(bodyParse.urlencoded({ extended: true }))
+app.use(routes)
 
-nunjucks.configure('./', {
-    express: app,
-    noCache: true,
-})
-
-app.get('/', (req, res) => {
-    res.render('./public/index.html')
-})
-
-app.post('/', (req, res) => {
-    const { email, subject, message } = req.body
-
-    const { host, port, auth } = config
-    const { user } = auth
-
-    const transporter = nodemailer.createTransport({
-        host,
-        port,
-        auth
-    })
-
-    const SendMessage = {
-        from: user,
-        to: email,
-        subject,
-        text: `${message}\n\n\n\n Date ${new Date()}`
-    }
-
-    transporter.sendMail(SendMessage)
-
-    return res.redirect('/')
-})
-
-app.listen(8080, () => console.log(`Server iniciado... http://localhost:8080`))
+app.listen(3333, () => console.log(`Server iniciado... http://localhost:3333`))
